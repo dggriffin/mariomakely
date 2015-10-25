@@ -27,7 +27,7 @@ TilesSet = SM1, SM3, SMW, or NSM
 Difficulty = Easy, Normal, Hard
 MiscTag = Anything you'd like..Ex: "Yoshi", "Water", "Ghost-House", "Auto-play", "Kaizo", "Puzzle"
 ```
-For example, if I made a normal-difficulty, Super Mario 3 Ghost-house level, I would probably tag it like this:
+For example, if I made a normal-difficulty, Super Mario 3 Ghost-house level, I would probably tag it by naming my level like this:
 ```
 [SM3; Normal; Ghost-House] Haunted Mansion
 ```
