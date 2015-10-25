@@ -5,7 +5,7 @@ if (Meteor.isServer) {
             name: 'Get new Mario Maker levels',
             schedule: function(parser) {
                 // parser is a later.parse object
-                return parser.text('every 5 mins');
+                return parser.text('every 2 mins');
             },
             job: function() {
                 $ = cheerio.load(Meteor.http.get("https://miiverse.nintendo.net/titles/6437256808751874777/6437256808751874782/in_game").content)
@@ -17,11 +17,6 @@ if (Meteor.isServer) {
                 var codeOffset = 0;
                 var tagString = "";
                 _.each(posts, function(post) {
-                    level.postId = post.id;
-                    user.icon = $('.icon', post).attr('src');
-                    user.name = $('p a[href*=users]', post).text();
-                    user.page = $('p a[href*=users]', post).attr('href');
-                    level.icon = $('img[src*=cloud]', post).attr('src');
                     contentText = $('.post-content-text', post).text();
                     codeOffset = contentText.search(/\(/);
                     level.code = contentText.substring(codeOffset);
@@ -30,9 +25,15 @@ if (Meteor.isServer) {
                     if (tagString) {
                         tagString = tagString.replace(/\[|]|\s/g, "");
                         level.tags = tagString.split(';');
+                        level.postId = post.id;
+                        user.icon = $('.icon', post).attr('src');
+                        user.name = $('p a[href*=users]', post).text();
+                        user.page = $('p a[href*=users]', post).attr('href');
+                        level.icon = $('img[src*=cloud]', post).attr('src');
+                        level.user = user;
+                        Levels.insert(level);
                     }
-                    level.user = user;
-                    Levels.insert(level);
+
                 });
             }
         });
