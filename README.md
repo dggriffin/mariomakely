@@ -32,4 +32,4 @@ For example, if I made a normal-difficulty, Super Mario 3 Ghost-house level, I w
 [SM3; Normal; Ghost-House] Haunted Mansion
 ```
 
-Using this suggest notation, it becomes simple for users to hop on **mariomakely** and search for easy/hard/normal difficulty mario levels with the tile-set of their choosing. I hope that **mariomakely** will serve the Super Mario Maker community as a way to give great levels exposure, as well as a way for players to easily find and play levels that appeal to them!
+Using this suggested notation, it becomes simple for users to hop on **mariomakely** and search for easy/hard/normal difficulty mario levels with the tile-set of their choosing. I hope that **mariomakely** will serve the Super Mario Maker community as a way to give great levels exposure, as well as a way for players to easily find and play levels that appeal to them!
