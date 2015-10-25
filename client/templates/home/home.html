@@ -1,0 +1,12 @@
+<template name="home">
+  <h1 class="title">
+  	<span>mariomakely</span>
+  </h1>
+  {{#each levels}}
+  	<h2>{{title}}</h2>
+  	<img src="{{icon}}"/>
+  	<br/>
+  	<img src="{{user.icon}}"/>
+  	{{user.name}}
+  {{/each}}
+</template>

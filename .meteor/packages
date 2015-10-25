@@ -26,3 +26,10 @@ useraccounts:core
 mdg:camera
 fourseven:scss
 andrei:iron-router-body-class
+mrt:cheerio
+meteorhacks:npm
+
+
+npm-container
+percolate:synced-cron
+http
