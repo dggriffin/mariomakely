@@ -22,9 +22,10 @@ if (Meteor.isServer) {
                     level.code = contentText.substring(codeOffset);
                     level.title = contentText.substring(0, codeOffset);
                     tagString = contentText.match(/\[.*\]/g) ? contentText.match(/\[.*\]/g)[0] : "";
-                    if (tagString) {
+                    if (tagString && !Levels.findOne({code: level.code})) {
                         tagString = tagString.replace(/\[|]|\s/g, "");
                         level.tags = tagString.split(';');
+                        level.date = new Date();
                         level.postId = post.id;
                         user.icon = $('.icon', post).attr('src');
                         user.name = $('p a[href*=users]', post).text();

@@ -6,9 +6,9 @@ if (Meteor.isServer) {
                 tags: {
                     $in: tags.split('&')
                 }
-            });
+            }, {sort: {date: -1}});
         } else {
-            return Levels.find();
+            return Levels.find({}, {sort: {date: -1}});
         }
 
     });
