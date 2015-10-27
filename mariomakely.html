@@ -1,10 +1,24 @@
 <head> 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
 </head>
 
 <template name="main">
 
-    {{> yield}}
-
+<div class="header">
+	<div class="header-content">
+		<h1>mariomakely</h1>
+         <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="  search-query form-control" placeholder="Search Tags" />
+                        <span class="input-group-btn">
+                            <button id="search" class="btn btn-danger" type="button">
+                                <span class=" glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+   	 	 </div>	
+	</div>
+</div>
+    	{{> yield}}
 </template>

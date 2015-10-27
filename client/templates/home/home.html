@@ -1,12 +1,35 @@
 <template name="home">
-  <h1 class="title">
-  	<span>mariomakely</span>
-  </h1>
-  {{#each levels}}
-  	<h2>{{title}}</h2>
-  	<img src="{{icon}}"/>
-  	<br/>
-  	<img src="{{user.icon}}"/>
-  	{{user.name}}
-  {{/each}}
+  <div class ="content">
+    <div class="user-tags">
+      {{#each userTags}}
+        <button id= "{{this}}" class="tag-tag">
+                {{this}} 
+                <span class=" glyphicon glyphicon-remove"></span>
+        </button>
+      {{/each}}
+  </div>
+  <div class ="posts">
+    {{#each levels}}
+      <div class="level">
+        <div class="user-content">
+          <img class="user-image" src="{{user.icon}}"/>
+          <div class="user-name">{{user.name}}</div>
+        </div>
+      	<img class="level-image" src="{{icon}}"/>
+        <h2 class ="level-name">{{title}}</h2>
+        <h3 class ="level-code">{{code}}</h3>
+        <hr/>
+        <div class= "level-tags">
+          Tags:
+          {{#each tags}}
+            <div class="tag-tag">
+              {{this}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+    </div>
+  </div>
+
 </template>
