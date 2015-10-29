@@ -61,6 +61,12 @@
 							float: left;
 							border: 1px solid #dddddd;
 							border-radius: 5px;
+
+							@media screen and (max-width:615px) {
+								width: 30%;
+								height: 30%;
+								margin: 0 0 10px 0;
+							}
 						}
 						.user-name {
 							padding: 5px;
@@ -117,16 +123,16 @@
 			.side-bar {
 				margin-right: 15px;
 				padding: 5px;
-				width: 300px;
+				width: 20%;
 				display: inline-table;
 				flex-flow: row wrap;
 				justify-content: center;
 
 				@media screen and (max-width:1050px) {
-					width: 650px;
+					width: 70%;
 					margin: 0 0 10px 0;
 				}
-				hr{
+				hr {
 					margin: 5px;
 				}
 				.side-name {
@@ -146,7 +152,7 @@
 						padding: 5px;
 						align-self: auto;
 						border: none;
-						margin: 0 3px 0 3px;
+						margin: 0 3px 3px 3px;
 						background-color: $primary-red;
 						border-radius: 5px;
 						color: #FFF;
