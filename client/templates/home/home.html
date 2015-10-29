@@ -8,28 +8,41 @@
         </button>
       {{/each}}
   </div>
-  <div class ="posts">
-    {{#each levels}}
-      <div class="level">
-        <div class="user-content">
-          <img class="user-image" src="{{user.icon}}"/>
-          <div class="user-name">{{user.name}}</div>
-        </div>
-        <div class="time">{{date}}</div>
-      	<img class="level-image" src="{{icon}}"/>
-        <h2 class ="level-name">{{title}}</h2>
-        <h3 class ="level-code">{{code}}</h3>
-        <hr/>
-        <div class= "level-tags">
-          Tags:
-          {{#each tags}}
-            <div class="tag-tag">
-              {{this}}
-            </div>
-          {{/each}}
-        </div>
+  <div class="main-view">
+    <div class ="side-bar">
+      <h1 class = "side-name"> popular tags</h1>
+      <hr/>
+      <div class = "side-tags">
+      {{#each popularTags}}
+        <button id= "{{tag}}" class="tag-tag">
+                {{tag}} 
+        </button>
+      {{/each}}
       </div>
-    {{/each}}
+    </div>
+    <div class ="posts">
+      {{#each levels}}
+        <div class="level">
+          <div class="user-content">
+            <img class="user-image" src="{{user.icon}}"/>
+            <div class="user-name">{{user.name}}</div>
+          </div>
+          <div class="time">{{date}}</div>
+        	<img class="level-image" src="{{icon}}"/>
+          <h2 class ="level-name">{{title}}</h2>
+          <h3 class ="level-code">{{code}}</h3>
+          <hr/>
+          <div class= "level-tags">
+            Tags:
+            {{#each tags}}
+              <button class="tag-tag">
+                {{this}}
+              </button>
+            {{/each}}
+          </div>
+        </div>
+      {{/each}}
+      </div>
     </div>
   </div>
 

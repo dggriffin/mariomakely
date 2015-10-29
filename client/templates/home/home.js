@@ -1,6 +1,10 @@
     Template.home.helpers({
         levels: function() {
-            return Levels.find().fetch();
+            return Levels.find({}, {
+                sort: {
+                    date: -1
+                }
+            }).fetch();
         },
         userTags: function() {
             if (Session.get('tags')) {
@@ -8,6 +12,9 @@
             } else {
                 return [];
             }
+        },
+        popularTags: function() {
+            return Tags.find().fetch();
         }
     });
 
@@ -17,15 +24,23 @@
             var tags = Session.get('tags');
             var newList = _.reject(tags.split('&'), (tag) => {
                 return tag === id
-            })
+            });
             var newTags = newList.join('&');
             Session.set('tags', newTags);
             Router.go('/' + newTags);
+        },
+        'click .side-tags button,.level-tags button': function(e) {
+            var id = $(e.currentTarget).text().trim();
+            var tags = Session.get('tags');
+            tags = tags ? tags + '&' + id : id;
+            Session.set('tags', tags);
+            Router.go('/' + tags);
+            $('input').val('');
         }
     });
 
     Template.home.onRendered(() => {
-        $('.time').text(function(){
+        $('.time').text(function() {
             var postTime = new Date(this.textContent);
             var currentTime = new Date();
 

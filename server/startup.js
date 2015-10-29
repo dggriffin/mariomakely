@@ -1,5 +1,6 @@
 if (Meteor.isServer) {
     Meteor.startup(function() {
+        
         var cheerio = Meteor.npmRequire('cheerio');
         SyncedCron.add({
             name: 'Get new Mario Maker levels',
@@ -22,8 +23,10 @@ if (Meteor.isServer) {
                     level.code = contentText.substring(codeOffset);
                     level.title = contentText.substring(0, codeOffset);
                     tagString = contentText.match(/\[.*\]/g) ? contentText.match(/\[.*\]/g)[0] : "";
-                    if (tagString && !Levels.findOne({code: level.code})) {
-                        tagString = tagString.replace(/\[|]|\s/g, "");
+                    if (tagString && !Levels.findOne({
+                        code: level.code
+                    })) {
+                        tagString = tagString.replace(/\[|]|\s/g, "").toLowerCase();
                         level.tags = tagString.split(';');
                         level.date = new Date();
                         level.postId = post.id;
@@ -33,6 +36,26 @@ if (Meteor.isServer) {
                         level.icon = $('img[src*=cloud]', post).attr('src');
                         level.user = user;
                         Levels.insert(level);
+
+                        _.each(level.tags, function(tag) {
+                            var tagFound = Tags.findOne({
+                                tag: tag
+                            });
+                            if (tagFound) {
+                                Tags.update({
+                                    _id: tagFound._id
+                                }, {
+                                    $inc: {
+                                        count: 1
+                                    }
+                                });
+                            } else {
+                                Tags.insert({
+                                    tag: tag,
+                                    count: 1
+                                });
+                            }
+                        });
                     }
 
                 });

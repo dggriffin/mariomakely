@@ -6,10 +6,27 @@ if (Meteor.isServer) {
                 tags: {
                     $in: tags.split('&')
                 }
-            }, {sort: {date: -1}});
+            }, {
+                sort: {
+                    date: -1
+                }
+            });
         } else {
-            return Levels.find({}, {sort: {date: -1}});
+            return Levels.find({}, {
+                sort: {
+                    date: -1
+                },
+                limit: 25
+            })
         }
 
+    });
+
+    Meteor.publish("topTags", function() {
+        return Tags.find({
+            count: {
+                $gte: 5
+            }
+        });
     });
 }
