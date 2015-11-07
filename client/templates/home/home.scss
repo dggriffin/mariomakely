@@ -2,13 +2,19 @@
 
 .home {
 	background-color: #f4f4f4;
-	background-image: url("http://vignette2.wikia.nocookie.net/universe-of-smash-bros-lawl/images/e/ee/Construction_Mario.png/revision/latest?cb=20150906231228");
+    background-image: url("/images/pixel-mario-wallpaper-1.jpg");
 	background-position: right bottom; /*Positioning*/
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 
 	div {
 		font-family: 'Open Sans', sans-serif;
+	}
+
+	.main-search{
+		max-width: 200px;
+		opacity: .8;
+		margin: 0;
 	}
 
 	/*Prevent showing multiple background images*/
