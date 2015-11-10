@@ -16,7 +16,7 @@ if (Meteor.isServer) {
                 sort: {
                     date: -1
                 },
-                limit: 25
+                limit: 12
             })
         }
 

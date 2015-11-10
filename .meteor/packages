@@ -23,6 +23,7 @@ accounts-facebook
 accounts-base
 ian:accounts-ui-bootstrap-3
 natestrauser:animate-css
+materialize:materialize@=0.97.0
 mdg:camera
 fourseven:scss
 andrei:iron-router-body-class

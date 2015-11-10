@@ -20,10 +20,17 @@
 <div class="splash-container">
     <div class="splash">
         <h1 class="splash-head">Search Mario Levels</h1>
-        <p>
-        <form class="pure-form">
-            <input type="text" class="main-search pure-input-rounded"></form>
-        </p>
+         <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field">
+                <i class="fa fa-search prefix white-text"></i>
+                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                <label for="icon_prefix2">Search Tags</label>
+              </div>
+            </div>
+          </form>
+        </div>
         <p class="splash-subhead">
             Learn about how mariomakely tagging works.
         </p>
@@ -31,64 +38,55 @@
     </div>
 </div>
 
-<div class="content-wrapper">
+<div class="content-wrapper indigo lighten-5">
     <div class="content">
-        <h2 class="content-head is-center">Recently uploaded levels</h2>
+        <h2 class="content-head is-center white-text">Recently uploaded levels</h2>
 
         <div class="pure-g">
-              <div class ="content">
-                <div class="user-tags">
-                  {{#each userTags}}
-                    <button id= "{{this}}" class="tag-tag">
-                            {{this}} 
-                            <span class=" glyphicon glyphicon-remove"></span>
-                    </button>
-                  {{/each}}
-              </div>
-              <div class="main-view">
+              <div class ="card-grid content ">
 
-                <div class ="posts">
-                  {{#each levels}}
-                    <div class="level">
-                      <div class="user-content">
-                        <img class="user-image" src="{{user.icon}}"/>
-                        <div class="user-name">{{user.name}}</div>
-                      </div>
-                      <div class="time">{{date}}</div>
-                      <img class="level-image" src="{{icon}}"/>
-                      <h2 class ="level-name">{{title}}</h2>
-                      <h3 class ="level-code">{{code}}</h3>
-                      <hr/>
-                      <div class= "level-tags">
-                        Tags:
+                {{#each levels}}
+                <div class="level card">
+                  <div class="card-image waves-effect waves-block waves-light">
+                    <img class="level-image blur  responsive-img" src="{{icon}}"/>
+                     <span class="card-title">{{title}}</span>
+                  </div>
+                  <div class="card-content ">
+                    <span class="card-title activator grey-text text-darken-4"> 
+                    <i class="fa fa-ellipsis-h right grey-text"></i></span>
+                        <div>                        
                         {{#each tags}}
-                          <button class="tag-tag">
-                            {{this}}
-                          </button>
+                            <div class="chip deep-orange lighten-2 waves-effect waves-block waves-light">
+                              <b class="white-text">{{this}}</b>
+                            </div>
                         {{/each}}
-                      </div>
-                    </div>
-                  {{/each}}
+                        </div>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{code}}<i class="fa fa-times right"></i></span>
+                    {{date}}
+                 <img class="user-image" src="{{user.icon}}"/>
+                        <div class="user-name">{{user.name}}</div>
                   </div>
                 </div>
+                {{/each}}
+
               </div>
         </div>
     </div>
 
     <div class="ribbon l-box-lrg pure-g">
-        <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
-            <img class="pure-img-responsive" alt="File Icons" width="300" src="img/common/file-icons.png">
-        </div>
-        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5 is-center ">
 
             <h2 class="content-head content-head-ribbon">popular tags</h2>
 
             <p>
-                  {{#each popularTags}}
-                    <button id= "{{tag}}" class="tag-tag">
-                            {{tag}} 
-                    </button>
-                  {{/each}}
+          {{#each popularTags}}
+            <div class="chip">
+              {{tag}}
+              <i class="fa fa-times"></i>
+            </div>
+          {{/each}}
             </p>
         </div>
     </div>

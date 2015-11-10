@@ -2,170 +2,36 @@
 
 .home {
 	background-color: #f4f4f4;
-    background-image: url("/images/pixel-mario-wallpaper-1.jpg");
+	background-image: url("/images/pixel-mario-wallpaper-1.jpg");
 	background-position: right bottom; /*Positioning*/
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 
-	div {
-		font-family: 'Open Sans', sans-serif;
-	}
-
-	.main-search{
+	.main-search {
 		max-width: 200px;
 		opacity: .8;
 		margin: 0;
 	}
 
-	/*Prevent showing multiple background images*/
-	.content {
-		margin: 25px auto;
-
-		.user-tags {
-			margin: auto;
-			display: flex;
-			padding: 15px;
-			flex-flow: row wrap;
-			justify-content: center;
-
-			.tag-tag {
-				align-self: auto;
-				padding: 5px;
-				border: none;
-				margin: 35px 3px 0 3px;
-				background-color: $primary-red;
-				border-radius: 5px;
-				color: #FFF;
-				font-weight: 600;
-			}
-		}
-		.main-view {
-			display: flex;
-			padding: 15px;
-			margin: auto;
-			flex-flow: row wrap;
-			justify-content: center;
-
-			.posts {
-				width: 650px;
-				background: #FFF;
-				border: 1px solid #dddddd;
-				border-radius: 5px;
-
-				.level {
-					border-bottom-style: solid;
-					border-bottom-width: 1px;
-					border-bottom-color: #dddddd;
-					padding: 15px 15px 30px 15px;
-					box-sizing: border-box;
-
-					.user-content {
-						position: absolute;
-						box-sizing: border-box;
-
-						.user-image {
-							float: left;
-							border: 1px solid #dddddd;
-							border-radius: 5px;
-
-							@media screen and (max-width:615px) {
-								width: 30%;
-								height: 30%;
-								margin: 0 0 10px 0;
-							}
-						}
-						.user-name {
-							padding: 5px;
-							float: left;
-							font-family: 'Helvetica';
-							font-weight: bold;
-						}
-					}
-					.time {
-						float: right;
-						padding: 5px;
-						color: #dddddd;
-					}
-					.level-name {
-						padding: 15px;
-						text-align: center;
-						font-weight: 600;
-						margin-top: 5px;
-						color: $dark-gray;
-					}
-					.level-code {
-						text-align: center;
-						font-weight: 400;
-						color: $beige-red;
-						margin-top: 0px;
-					}
-					.level-image {
-						display: block;
-						margin-left: auto;
-						margin-right: auto;
-						margin-top: 50px;
-						border: 1px solid #dddddd;
-						border-radius: 5px;
-					}
-					.level-tags {
-						margin: auto;
-						flex-flow: row wrap;
-						display: flex;
-						justify-content: flex-start;
-
-						.tag-tag {
-							align-self: auto;
-							border: none;
-							padding: 5px;
-							margin: 0 3px 0 3px;
-							background-color: $primary-red;
-							border-radius: 5px;
-							color: #FFF;
-							font-weight: 600;
-						}
-					}
-				}
-			}
-			.side-bar {
-				margin-right: 15px;
-				padding: 5px;
-				width: 20%;
-				display: inline-table;
-				flex-flow: row wrap;
-				justify-content: center;
-
-				@media screen and (max-width:1050px) {
-					width: 70%;
-					margin: 0 0 10px 0;
-				}
-				hr {
-					margin: 5px;
-				}
-				.side-name {
-					margin: 0px;
-					padding: 5px;
-					text-align: center;
-					font-weight: 600;
-					color: $dark-gray;
-					border-radius: 5px;
-				}
-				.side-tags {
-					display: flex;
-					flex-flow: row wrap;
-					justify-content: center;
-
-					.tag-tag {
-						padding: 5px;
-						align-self: auto;
-						border: none;
-						margin: 0 3px 3px 3px;
-						background-color: $primary-red;
-						border-radius: 5px;
-						color: #FFF;
-						font-weight: 600;
-					}
-				}
-			}
-		}
+	.level {
+		letter-spacing: 0;
+		margin: 10px;
 	}
+
+	.blur {
+	  -webkit-filter: blur(5px);
+	  filter: blur(5px);
+	}
+	.blur:hover{
+		 -webkit-filter: blur(0px);
+	  filter: blur(0px);
+	}
+
+	.card-grid{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+
+	/*Prevent showing multiple background images*/
 }
