@@ -1,11 +1,14 @@
 @import '../../../mariomakely.scss';
 
-.home {
+.backimage{
 	background-color: #f4f4f4;
 	background-image: url("/images/background-2.png");
 	background-position: center; /*Positioning*/
 	background-attachment: fixed;
 	background-repeat: no-repeat;
+}
+
+.home {
 
 	.main-search {
 		max-width: 200px;
