@@ -2,8 +2,8 @@
 
 .home {
 	background-color: #f4f4f4;
-	background-image: url("/images/pixel-mario-wallpaper-1.jpg");
-	background-position: right bottom; /*Positioning*/
+	background-image: url("/images/background-2.png");
+	background-position: center; /*Positioning*/
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 
@@ -31,6 +31,22 @@
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
+	}
+
+	.search-link{
+		background-color: #FFF;
+		border-radius: 5px;
+		opacity: .6;
+		display: inline-block;
+		margin: auto;
+		padding: 1em;
+	}
+
+	.floor-divider{
+		width:100%;
+		background-image: url("/images/floor-tile2.png");
+		background-repeat: repeat-x;
+		height: 50px;
 	}
 
 	/*Prevent showing multiple background images*/

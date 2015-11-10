@@ -7,6 +7,7 @@ $dark-gray: #3A393B;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+        font-family: "Roboto";
 }
 
 /*
@@ -113,6 +114,7 @@ a.pure-button-primary {
 .home-menu .pure-menu-heading {
     color: white;
     font-weight: 400;
+    font-family: "Roboto";
     font-size: 120%;
 }
 
@@ -161,10 +163,9 @@ a.pure-button-primary {
 /* This is the main heading that appears on the blue section */
 .splash-head {
     font-size: 20px;
-    font-weight: bold;
     color: white;
+    font-family: "Roboto";
     // border: 3px solid white;
-    padding: 1em 1.6em;
     font-weight: 100;
     border-radius: 5px;
     line-height: 1em;
@@ -194,10 +195,10 @@ a.pure-button-primary {
 
 /* This is the class used for the main content headers (<h2>) */
 .content-head {
-    font-weight: 400;
-    text-transform: uppercase;
+    font-family: "Roboto";
+    font-weight: 100;
     letter-spacing: 0.1em;
-    margin: 2em 0 1em;
+    margin: 1em 0 1em;
 }
 
 /* This is a modifier class used when the content-head is inside a ribbon */
