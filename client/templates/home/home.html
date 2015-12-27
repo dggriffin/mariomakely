@@ -18,7 +18,7 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field">
-                <a href="{{pathFor 'search'}}" data-transition-out="scaleOut" data-transition-in="scaleIn">
+                <a class ="no-hover" href="{{pathFor 'search'}}" data-transition-out="scaleOut" data-transition-in="scaleIn">
                   <div class ="search-link">
                     <i class="fa fa-search"></i>
                     Search Tags
@@ -42,8 +42,8 @@
             {{#each levels}}
             <div class="level card">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="level-image blur  responsive-img" src="{{icon}}"/>
-                 <img class="user-image" src="{{user.icon}}"/>
+                <img class="level-image blur activator responsive-img" src="{{icon}}"/>
+                <img class="user-image" src="{{user.icon}}"/>
                 <span class="card-title">{{title}}</span>
               </div>
               <div class="card-content ">
@@ -57,11 +57,21 @@
                   {{/each}}
                 </div>
               </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">{{code}}<i class="fa fa-times right"></i></span>
-                {{date}}
-                <img class="user-image" src="{{user.icon}}"/>
-                <div class="user-name">{{user.name}}</div>
+              <div class="card-reveal flex-column">
+                <span class="card-title grey-text text-darken-4">
+                  {{title}}
+                  <i class="fa fa-times right"></i>
+                </span>
+                <div class="code title">
+                  {{code}}
+                </div>
+                <div class ="details-footer">
+                  <div>
+                    <img class="details-user-image" src="{{user.icon}}"/>
+                    <div class="user-name">{{user.name}}</div>
+                  </div>
+                  <div class ="thin"> {{date}} </div>
+                </div>
               </div>
             </div>
             {{/each}}

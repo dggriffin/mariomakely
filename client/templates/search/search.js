@@ -43,6 +43,8 @@
             if (e.keyCode === 13) {
                 console.log('honk');
                 return false;
+            } else if (e.keyCode === 27) {
+                Router.go('home');
             } else {
                 var value = $(e.currentTarget).val();
                 searchString.changed();
@@ -51,6 +53,6 @@
         }
     });
 
-    //  Template.search.onRendered(() => {
-    //     $('input').focus();
-    // });
+     Template.search.onRendered(() => {
+        $('input').focus();
+    });
