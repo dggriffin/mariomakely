@@ -1,18 +1,44 @@
+@import '../../../mariomakely.scss';
+
 .search {
+	background-color: #EDEDED;
 }
 .search-page {
 	display: flex;
 	flex-flow: column wrap;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
+	justify-content: flex-start;
 }
 .main-search {
 	max-width: 300px;
 	margin: auto;
+	display: flex;
+	align-content: center;
+	flex-direction: column;
 }
-
-.large-input{
+.large-input {
 	font-size: 3em !important;
-	line-height: 3em;
+	font-weight: 100;
+	line-height: 1em;
+}
+.padding {
+	padding: .5em;
+}
+.card-grid {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+.level {
+	letter-spacing: 0;
+	margin: 10px !important;
+}
+.input-search {
+	display: flex;
+}
+.user-image {
+	position: absolute !important;
+	width: 3em !important;
+	background-color: white !important;
+	border-radius: 3em !important;
+	margin: 1em;
 }

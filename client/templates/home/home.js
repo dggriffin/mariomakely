@@ -3,7 +3,8 @@
             return Levels.find({}, {
                 sort: {
                     date: -1
-                }
+                },
+                limit: 6
             }).fetch();
         },
         userTags: function() {
