@@ -4,9 +4,11 @@
         levels: function() {
             searchString.depend();
             var value = $('input').val();
+            var tag = Session.get('tags');
+            value = value ? value : tag;
             var levels = Levels.find({
                 tags: {
-                    $in: [value]
+                    $in: [value.toLowerCase()]
                 }
             }, {
                 sort: {
