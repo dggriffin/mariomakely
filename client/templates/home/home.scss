@@ -47,6 +47,11 @@
 		flex-flow: column;
 		justify-content: space-between;
 	}
+	.flex-row {
+		display: flex !important;
+		flex-flow: row;
+		justify-content: flex-start;
+	}
 
 	/*.blur {
 		-webkit-filter: blur(5px);

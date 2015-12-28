@@ -4,7 +4,7 @@
         levels: function() {
             searchString.depend();
             var value = $('input').val();
-            return Levels.find({
+            var levels = Levels.find({
                 tags: {
                     $in: [value]
                 }
@@ -13,6 +13,25 @@
                     date: -1
                 }
             }).fetch();
+
+            levels.forEach((level) => {
+                var postTime = new Date(level.date);
+                var currentTime = new Date();
+
+                var timeDiff = currentTime - postTime;
+                var msec = timeDiff;
+                var dd = Math.floor(msec / 1000 / 60 / 60 / 24);
+                var hh = Math.floor(msec / 1000 / 60 / 60);
+                msec -= hh * 1000 * 60 * 60;
+                var mm = Math.floor(msec / 1000 / 60);
+                if (dd) {
+                    level.date = dd + " days ago"
+                } else {
+                    level.date = hh ? hh + " hours and " + mm + " minutes ago" : mm + " minutes ago";
+                }
+            });
+
+            return levels;
         },
         levelCount: function() {
             searchString.depend();
@@ -48,11 +67,14 @@
             } else {
                 var value = $(e.currentTarget).val();
                 searchString.changed();
-                Meteor.subscribe('search', value);
             }
         }
     });
 
-     Template.search.onRendered(() => {
+    Template.search.onRendered(() => {
+        var tag = Session.get('tags');
+        if (tag) {
+            $('input').val(tag);
+        }
         $('input').focus();
     });

@@ -39,15 +39,8 @@
     });
 
     Template.home.events({
-        'click button': function(e) {
-            var id = $(e.currentTarget).attr('id');
-            var tags = Session.get('tags');
-            var newList = _.reject(tags.split('&'), (tag) => {
-                return tag === id
-            });
-            var newTags = newList.join('&');
-            Session.set('tags', newTags);
-            Router.go('/' + newTags);
+        'click b.white-text': function(e) {
+            Router.go('searchtag', {_tags: $(e.currentTarget).text() } );
         },
         'click .side-tags button,.level-tags button': function(e) {
             var id = $(e.currentTarget).text().trim();

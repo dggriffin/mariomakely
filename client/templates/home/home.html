@@ -5,9 +5,9 @@
       <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
         <a class="pure-menu-heading" href="">mariomakely</a>
         <ul class="pure-menu-list">
-          <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
-          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Recently Uploaded</a></li>
-          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Popular Tags</a></li>
+          <li class="pure-menu-item"><a href="#" class="home pure-menu-link">Home</a></li>
+          <li class="pure-menu-item"><a href="#" class="recent pure-menu-link">Recently Uploaded</a></li>
+          <li class="pure-menu-item"><a href="#" class="popular pure-menu-link">Popular Tags</a></li>
         </ul>
       </div>
     </div>
@@ -43,30 +43,34 @@
             <div class="level card">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="level-image blur activator responsive-img" src="{{icon}}"/>
-                <img class="user-image" src="{{user.icon}}"/>
-                <span class="card-title">{{title}}</span>
+                <img class="user-image activator" src="{{user.icon}}"/>
+                <span class="card-title activator">{{title}}</span>
               </div>
               <div class="card-content ">
                 <span class="card-title activator grey-text text-darken-4">
                 <i class="fa fa-ellipsis-h right grey-text"></i></span>
                 <div>
+                  
                   {{#each tags}}
-                  <div class="chip deep-orange lighten-2 waves-effect waves-block waves-light">
-                    <b class="white-text">{{this}}</b>
-                  </div>
+                  <a class ="no-hover" href="{{pathFor 'searchtag' _tags=this}}" data-transition-out="scaleOut" data-transition-in="scaleIn">
+                    <div class="chip deep-orange lighten-2 waves-effect waves-block waves-light">
+                      <b class="white-text">{{this}}</b>
+                    </div>
+                  </a>
                   {{/each}}
+                  
                 </div>
               </div>
               <div class="card-reveal flex-column">
                 <span class="card-title grey-text text-darken-4">
+                  <i class="fa fa-times close right"></i>
                   {{title}}
-                  <i class="fa fa-times right"></i>
                 </span>
                 <div class="code title">
                   {{code}}
                 </div>
                 <div class ="details-footer">
-                  <div>
+                  <div class ="flex-row">
                     <img class="details-user-image" src="{{user.icon}}"/>
                     <div class="user-name">{{user.name}}</div>
                   </div>
@@ -84,10 +88,11 @@
           <h2 class="content-head content-head-ribbon">popular tags</h2>
           <p>
             {{#each popularTags}}
-            <div class="chip">
-              {{tag}}
-              <i class="fa fa-times"></i>
+             <a class ="no-hover" href="{{pathFor 'searchtag' _tags=tag}}" data-transition-out="scaleOut" data-transition-in="scaleIn">
+            <div class="chip deep-orange lighten-2 waves-effect waves-block waves-light">
+              <b class="white-text">{{tag}}</b>
             </div>
+            </a>
             {{/each}}
           </p>
         </div>
@@ -124,6 +129,9 @@
           </div>
         </div>
       </div> -->
+      <div class="footer l-box is-center">
+        Copyright © 2016 - Greyson Griffin
+      </div>
     </div>
   </body>
 </div>

@@ -1,56 +1,66 @@
 <template name="search">
 <div class ="transitions-content">
-	<div class ="search-page">
-		<a href="{{pathFor 'home'}}" data-transition-in="scaleIn" data-transition-out="scaleOut" >
-			<div class ="right close padding">
-				<i class="fa fa-times medium right close padding"></i>
-				<div class ="thin"> [ESC] </div>
-			</div>
-		</a>
-		<form >
-			<div class="main-search">
-				<div class="center thin">SEARCH TAGS</div>
-				<div class= "input-search">
-					<i class="fa fa-search medium"></i>
-					<input type="text" class="large-input" autofocus="autofocus">
-				</div>
-				{{#if searchValue}}
-				<div class="center thin">
-					{{levelCount}} levels found.
-				</div>
-				{{/if}}
-			</div>
-		</form>
-	</div>
-	<div class="pure-g">
-		<div class ="card-grid content row">
-			{{#each levels}}
-			<div class="level card">
-				<div class="card-image waves-effect waves-block waves-light">
-					<img class="level-image blur  responsive-img" src="{{icon}}"/>
-					<img class="user-image" src="{{user.icon}}"/>
-					<span class="card-title">{{title}}</span>
-				</div>
-				<div class="card-content ">
-					<span class="card-title activator grey-text text-darken-4">
-					<i class="fa fa-ellipsis-h right grey-text"></i></span>
-					<div>
-						{{#each tags}}
-						<div class="chip deep-orange lighten-2 waves-effect waves-block waves-light">
-							<b class="white-text">{{this}}</b>
-						</div>
-						{{/each}}
-					</div>
-				</div>
-				<div class="card-reveal">
-					<span class="card-title grey-text text-darken-4">{{code}}<i class="fa fa-times right"></i></span>
-					{{date}}
-					<img class="user-image" src="{{user.icon}}"/>
-					<div class="user-name">{{user.name}}</div>
-				</div>
-			</div>
-			{{/each}}
-		</div>
-	</div>
+  <div class ="search-page">
+    <a href="{{pathFor 'home'}}" data-transition-in="scaleIn" data-transition-out="scaleOut" >
+      <div class ="right close padding">
+        <i class="fa fa-times medium"></i>
+        <div class ="thin"> [ESC] </div>
+      </div>
+    </a>
+    <form >
+      <div class="main-search">
+        <div class="center thin">SEARCH TAGS</div>
+        <div class= "input-search">
+          <i class="fa fa-search medium"></i>
+          <input type="text" class="large-input" autofocus="autofocus">
+        </div>
+        {{#if searchValue}}
+        <div class="center thin">
+          {{levelCount}} levels found.
+        </div>
+        {{/if}}
+      </div>
+    </form>
+  </div>
+  <div class="pure-g">
+    <div class ="card-grid content row">
+      {{#each levels}}
+      <div class="level card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="level-image blur activator responsive-img" src="{{icon}}"/>
+          <img class="user-image activator" src="{{user.icon}}"/>
+          <span class="card-title activator">{{title}}</span>
+        </div>
+        <div class="card-content ">
+          <span class="card-title activator grey-text text-darken-4">
+          <i class="fa fa-ellipsis-h right grey-text"></i></span>
+          <div>
+            {{#each tags}}
+            <div class="chip deep-orange lighten-2 waves-effect waves-block waves-light">
+              <b class="white-text">{{this}}</b>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        <div class="card-reveal flex-column">
+          <span class="card-title grey-text text-darken-4">
+            <i class="fa fa-times close right"></i>
+            {{title}}
+          </span>
+          <div class="code title">
+            {{code}}
+          </div>
+          <div class ="details-footer">
+            <div class ="flex-row">
+              <img class="details-user-image" src="{{user.icon}}"/>
+              <div class="user-name">{{user.name}}</div>
+            </div>
+            <div class ="thin"> {{date}} </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </div>
 </template>
