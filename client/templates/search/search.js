@@ -4,8 +4,8 @@
         levels: function() {
             searchString.depend();
             var value = $('input').val();
-            var tag = Session.get('tags');
-            value = value ? value : tag;
+            // var tag = Session.get('tags');
+            // value = value ? value : tag;
             var levels = Levels.find({
                 tags: {
                     $in: [value.toLowerCase()]
@@ -38,6 +38,8 @@
         levelCount: function() {
             searchString.depend();
             var value = $('input').val();
+            // var tag = Session.get('tags');
+            // value = value ? value : tag;
             return Levels.find({
                 tags: {
                     $in: [value]
@@ -55,14 +57,8 @@
     });
 
     Template.search.events({
-        'change input': function(e) {
-            // var value = $(e.currentTarget).val();
-            // searchString.changed();
-            // Meteor.subscribe('search', value);
-        },
         'keydown input': function(e) {
             if (e.keyCode === 13) {
-                console.log('honk');
                 return false;
             } else if (e.keyCode === 27) {
                 Router.go('home');
@@ -77,6 +73,8 @@
         var tag = Session.get('tags');
         if (tag) {
             $('input').val(tag);
+            Session.get('tags', "");
+            searchString.changed();
         }
         $('input').focus();
     });

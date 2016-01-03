@@ -23,7 +23,7 @@ if (Meteor.isServer) {
                     level.code = contentText.substring(codeOffset);
                     level.title = contentText.substring(0, codeOffset);
                     tagString = contentText.match(/\[.*\]/g) ? contentText.match(/\[.*\]/g)[0] : "";
-                    if (tagString && !Levels.findOne({
+                    if (tagString.trim() && !Levels.findOne({
                         code: level.code
                     })) {
                         tagString = tagString.replace(/\[|]|\s/g, "").toLowerCase();
