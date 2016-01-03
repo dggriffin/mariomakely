@@ -23,7 +23,7 @@
                 <a class ="no-hover" href="{{pathFor 'search'}}" data-transition-out="scaleOut" data-transition-in="scaleIn">
                   <div class ="search-link">
                     <i class="fa fa-search"></i>
-                    Search Tags
+                    Search Levels
                   </div>
                 </a>
               </div>
@@ -38,7 +38,7 @@
     <div class="content-wrapper indigo lighten-5">
       <div class="floor-divider"></div>
       <div class="content">
-        <h2 class="content-head is-center grey-text">Recently uploaded levels</h2>
+        <h2 class="content-head is-center grey-text">recently uploaded levels</h2>
         <div class="pure-g">
           <div class ="card-grid content row">
             {{#each levels}}
@@ -52,7 +52,7 @@
                 <span class="card-title activator grey-text text-darken-4">
                 <i class="fa fa-ellipsis-h right grey-text"></i></span>
                 <div>
-                  
+                    
                   {{#each tags}}
                   <a class ="no-hover" href="{{pathFor 'searchtag' _tags=this}}" data-transition-out="scaleOut" data-transition-in="scaleIn">
                     <div class="chip deep-orange lighten-2 waves-effect waves-block waves-light">
@@ -91,7 +91,7 @@
           <p>
             {{#each popularTags}}
              <a class ="no-hover" href="{{pathFor 'searchtag' _tags=tag}}" data-transition-out="scaleOut" data-transition-in="scaleIn">
-            <div class="chip deep-orange lighten-2 waves-effect waves-block waves-light">
+            <div class="chip deep-orange lighten-2 waves-effect waves-block waves-light margin-below">
               <b class="white-text">{{tag}}</b>
             </div>
             </a>

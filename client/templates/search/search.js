@@ -3,39 +3,31 @@
     Template.search.helpers({
         levels: () => {
             searchString.depend();
-            var value = $('input').val();
-            var levels;
+            let value = $('input').val();
+            let levels;
+
             if (value) {
-                levels = Levels.find({
-                    tags: {
-                        $in: [value.toLowerCase()]
-                    }
-                }, {
+                Meteor.subscribe("search", value, $('.active-filter').text(),  () => {
+                    searchString.changed();
+                });
+                levels = Levels.find({}, {
                     sort: {
                         date: -1
                     }
                 }).fetch();
 
                 levels.forEach((level) => {
-                    var postTime = new Date(level.date);
+                    let postTime = new Date(level.date);
                     level.date = convertDateToElapsedTime(postTime);
                 });
 
                 return levels;
-            }
+                }
         },
         levelCount: () => {
             searchString.depend();
-            var value = $('input').val();
-            return Levels.find({
-                tags: {
-                    $in: [value]
-                }
-            }, {
-                sort: {
-                    date: -1
-                }
-            }).fetch().length;
+            let value = $('input').val();
+            return Levels.find().fetch().length;
         },
         searchValue: () => {
             searchString.depend();
@@ -50,12 +42,15 @@
             } else if (e.keyCode === 27) {
                 Router.go('home');
             } else {
-                var value = $(e.currentTarget).val();
-                Meteor.subscribe("search", value, () =>{
-                    searchString.changed();
-                });
-
+                searchString.changed();
             }
+        },
+        'click .filter' :function(e){
+            $('.filter').removeClass('active-filter');
+            var newFilter = $(e.currentTarget).text();
+            $(`.filter:contains(${newFilter})`).addClass('active-filter');
+            searchString.changed();
+
         }
     });
 
@@ -85,3 +80,8 @@
             return hh ? hh + " hours and " + mm + " minutes ago" : mm + " minutes ago";
         }
     };
+
+    var dependTest = () => {
+        searchString.depend();
+        console.log('wee');
+    }

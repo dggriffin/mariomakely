@@ -22,7 +22,8 @@ if (Meteor.isServer) {
 
     });
 
-    Meteor.publish("search", function(searchString) {
+    Meteor.publish("search", function(searchString, filter) {
+        if(filter === 'tags'){
             return Levels.find({
                 tags: {
                     $in: [searchString]
@@ -32,6 +33,31 @@ if (Meteor.isServer) {
                     date: -1
                 }
             });
+        }
+        else if (filter === "name") {
+            return Levels.find({
+                title: {
+                    $regex: `.*${searchString}.*`
+                }
+            }, {
+                sort: {
+                    date: -1
+                }
+            });
+
+        }
+        else if (filter === "creator"){
+            return Levels.find({
+                "user.name": {
+                    $regex: `.*${searchString}.*`
+                }
+            }, {
+                sort: {
+                    date: -1
+                }
+            });
+        }
+
     });
 
     Meteor.publish("topTags", function() {

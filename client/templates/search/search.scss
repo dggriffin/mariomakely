@@ -29,10 +29,31 @@
 	flex-flow: row wrap;
 	justify-content: center;
 }
-
 .level-count {
 	font-size: 1.5em;
 	margin-top: 1em;
+}
+.filter-select {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+
+	p {
+		margin: .5em;
+	}
+	.filter {
+		cursor: pointer;
+	}
+	.filter:hover {
+		border-bottom: .3em solid #7f8c8d;
+	}
+	.filter-divide {
+		font-size: 1.5em;
+		line-height: .7em;
+	}
+	.active-filter {
+		border-bottom: .3em solid #7f8c8d;
+	}
 }
 .level {
 	letter-spacing: 0;

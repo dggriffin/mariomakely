@@ -66,7 +66,7 @@ if (Meteor.isServer) {
             name: 'Curate removed levels',
             schedule: function(parser) {
                 // parser is a later.parse object
-                return parser.text('every 24 hours');
+                return parser.text('every 6 hours');
             },
             job: function() {
                 Levels.find().fetch().forEach((level) => {
