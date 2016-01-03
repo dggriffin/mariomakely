@@ -73,7 +73,7 @@
     var convertDateToElapsedTime = (date) => {
         var currentTime = new Date();
 
-        var timeDiff = currentTime - postTime;
+        var timeDiff = currentTime - date;
         var msec = timeDiff;
         var dd = Math.floor(msec / 1000 / 60 / 60 / 24);
         var hh = Math.floor(msec / 1000 / 60 / 60);
