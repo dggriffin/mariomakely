@@ -1,10 +1,30 @@
     Template.home.helpers({
         levels: function() {
-            return Levels.find({}, {
+            var levels = Levels.find({}, {
                 sort: {
                     date: -1
-                }
+                },
+                limit: 6
             }).fetch();
+
+            levels.forEach((level) => {
+                var postTime = new Date(level.date);
+                var currentTime = new Date();
+
+                var timeDiff = currentTime - postTime;
+                var msec = timeDiff;
+                var dd = Math.floor(msec / 1000 / 60 / 60 / 24);
+                var hh = Math.floor(msec / 1000 / 60 / 60);
+                msec -= hh * 1000 * 60 * 60;
+                var mm = Math.floor(msec / 1000 / 60);
+                if (dd) {
+                    level.date = dd + " days ago"
+                } else {
+                    level.date = hh ? hh + " hours and " + mm + " minutes ago" : mm + " minutes ago";
+                }
+            });
+
+            return levels;
         },
         userTags: function() {
             if (Session.get('tags')) {
@@ -19,15 +39,8 @@
     });
 
     Template.home.events({
-        'click button': function(e) {
-            var id = $(e.currentTarget).attr('id');
-            var tags = Session.get('tags');
-            var newList = _.reject(tags.split('&'), (tag) => {
-                return tag === id
-            });
-            var newTags = newList.join('&');
-            Session.set('tags', newTags);
-            Router.go('/' + newTags);
+        'click b.white-text': function(e) {
+            Router.go('searchtag', {_tags: $(e.currentTarget).text() } );
         },
         'click .side-tags button,.level-tags button': function(e) {
             var id = $(e.currentTarget).text().trim();

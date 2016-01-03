@@ -16,10 +16,14 @@ if (Meteor.isServer) {
                 sort: {
                     date: -1
                 },
-                limit: 25
+                limit: 6
             })
         }
 
+    });
+
+    Meteor.publish("search", function(searchString) {
+        return Levels.find();
     });
 
     Meteor.publish("topTags", function() {

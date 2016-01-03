@@ -1,6 +1,6 @@
 if (Meteor.isServer) {
     Meteor.startup(function() {
-        
+
         var cheerio = Meteor.npmRequire('cheerio');
         SyncedCron.add({
             name: 'Get new Mario Maker levels',
@@ -23,7 +23,7 @@ if (Meteor.isServer) {
                     level.code = contentText.substring(codeOffset);
                     level.title = contentText.substring(0, codeOffset);
                     tagString = contentText.match(/\[.*\]/g) ? contentText.match(/\[.*\]/g)[0] : "";
-                    if (tagString && !Levels.findOne({
+                    if (tagString.trim() && !Levels.findOne({
                         code: level.code
                     })) {
                         tagString = tagString.replace(/\[|]|\s/g, "").toLowerCase();
@@ -62,6 +62,27 @@ if (Meteor.isServer) {
             }
         });
 
+        SyncedCron.add({
+            name: 'Curate removed levels',
+            schedule: function(parser) {
+                // parser is a later.parse object
+                return parser.text('every 24 hours');
+            },
+            job: function() {
+                Levels.find().fetch().forEach((level) => {
+                    try {
+
+                        Meteor.http.get(level.icon);
+
+                    } catch (e) {
+                        Levels.remove({
+                            _id: level._id
+                        });
+                    }
+
+                });
+            }
+        });
         SyncedCron.start();
     });
 }

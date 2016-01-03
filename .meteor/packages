@@ -21,14 +21,15 @@ iron:router
 accounts-password
 accounts-facebook
 accounts-base
-useraccounts:bootstrap
-useraccounts:core
+ian:accounts-ui-bootstrap-3
+natestrauser:animate-css
+materialize:materialize@=0.97.0
 mdg:camera
 fourseven:scss
 andrei:iron-router-body-class
 mrt:cheerio
 meteorhacks:npm
-
+jamielob:transitions
 
 npm-container
 percolate:synced-cron
