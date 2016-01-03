@@ -1,12 +1,10 @@
     var searchString = new Deps.Dependency();
 
     Template.search.helpers({
-        levels: function() {
+        levels: () => {
             searchString.depend();
             var value = $('input').val();
             var levels;
-            // var tag = Session.get('tags');
-            // value = value ? value : tag;
             if (value) {
                 levels = Levels.find({
                     tags: {
@@ -20,29 +18,15 @@
 
                 levels.forEach((level) => {
                     var postTime = new Date(level.date);
-                    var currentTime = new Date();
-
-                    var timeDiff = currentTime - postTime;
-                    var msec = timeDiff;
-                    var dd = Math.floor(msec / 1000 / 60 / 60 / 24);
-                    var hh = Math.floor(msec / 1000 / 60 / 60);
-                    msec -= hh * 1000 * 60 * 60;
-                    var mm = Math.floor(msec / 1000 / 60);
-                    if (dd) {
-                        level.date = dd + " days ago"
-                    } else {
-                        level.date = hh ? hh + " hours and " + mm + " minutes ago" : mm + " minutes ago";
-                    }
+                    level.date = convertDateToElapsedTime(postTime);
                 });
 
                 return levels;
             }
         },
-        levelCount: function() {
+        levelCount: () => {
             searchString.depend();
             var value = $('input').val();
-            // var tag = Session.get('tags');
-            // value = value ? value : tag;
             return Levels.find({
                 tags: {
                     $in: [value]
@@ -53,31 +37,51 @@
                 }
             }).fetch().length;
         },
-        searchValue: function() {
+        searchValue: () => {
             searchString.depend();
             return $('input').val();
         }
     });
 
     Template.search.events({
-        'keydown input': function(e) {
+        'input input': function(e) {
             if (e.keyCode === 13) {
                 return false;
             } else if (e.keyCode === 27) {
                 Router.go('home');
             } else {
                 var value = $(e.currentTarget).val();
-                searchString.changed();
+                Meteor.subscribe("search", value, () =>{
+                    searchString.changed();
+                });
+
             }
         }
     });
 
-    Template.search.onRendered(() => {
+    Template.search.onRendered( () => {
         var tag = Session.get('tags');
         if (tag) {
             $('input').val(tag);
-            Session.get('tags', "");
-            searchString.changed();
+            $('input').trigger('input');
+            Session.set('tags', "");
         }
         $('input').focus();
     });
+
+
+    var convertDateToElapsedTime = (date) => {
+        var currentTime = new Date();
+
+        var timeDiff = currentTime - postTime;
+        var msec = timeDiff;
+        var dd = Math.floor(msec / 1000 / 60 / 60 / 24);
+        var hh = Math.floor(msec / 1000 / 60 / 60);
+        msec -= hh * 1000 * 60 * 60;
+        var mm = Math.floor(msec / 1000 / 60);
+        if (dd) {
+            return dd + " days ago";
+        } else {
+            return hh ? hh + " hours and " + mm + " minutes ago" : mm + " minutes ago";
+        }
+    };

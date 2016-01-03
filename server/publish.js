@@ -23,7 +23,15 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish("search", function(searchString) {
-        return Levels.find();
+            return Levels.find({
+                tags: {
+                    $in: [searchString]
+                }
+            }, {
+                sort: {
+                    date: -1
+                }
+            });
     });
 
     Meteor.publish("topTags", function() {
