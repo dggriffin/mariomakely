@@ -1,4 +1,4 @@
-# mariomakely | [Beta Demo](http://mariomakely.meteor.com)
+# mariomakely | [Beta Demo](http://mariomakely.com)
 
 **mariomakely** is an open-source web-app that automatically posts, sorts, and tags Super Mario Maker levels.
 
